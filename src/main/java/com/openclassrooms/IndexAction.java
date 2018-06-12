@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 import wstarget.openclassrooms.biblioback.ws.*;
@@ -41,6 +42,10 @@ public class IndexAction extends ActionSupport {
     public Date getDateNow() { return now; }
     
     public String execute() throws Exception {
+        List<Book> books = null;
+        BooksPortService booksPortService = new BooksPortService();
+        BooksPort booksPort = booksPortService.getBooksPortSoap11();
+        books = booksPort.getAllBooks(new GetAllBooksRequest()).getGetAllBooks();
 
         return SUCCESS;
     }
