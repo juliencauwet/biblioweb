@@ -11,14 +11,24 @@
 
         <default-action-ref name="index" />
 
-        <action name="index" class="com.openclassrooms.IndexAction">
+        <action name="index" class="com.openclassrooms.actions.IndexAction">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
 
-        <action name="helloWorld" class="com.openclassrooms.HelloWorldAction">
+        <action name="helloWorld" class="com.openclassrooms.actions.HelloWorldAction">
             <result name="input">/jsp/index.jsp</result>
             <result>/WEB-INF/jsp/helloWorld.jsp</result>
         </action>
+
+        <action name="book" class="com.openclassrooms.actions.BookAction">
+            <result>/WEB-INF/jsp/books.jsp</result>
+        </action>
+
+        <action name="getAllBooks" class="com.openclassrooms.actions.BookAction" method="getAllBooks">
+
+        </action>
+
+
 
 
 

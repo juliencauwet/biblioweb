@@ -15,6 +15,7 @@
  */
 package com.openclassrooms;
 
+import com.openclassrooms.actions.IndexAction;
 import junit.framework.TestCase;
 
 import com.opensymphony.xwork2.Action;

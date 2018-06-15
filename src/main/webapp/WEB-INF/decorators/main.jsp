@@ -13,6 +13,7 @@
     <link href="<s:url value='/styles/main.css'/>" rel="stylesheet" type="text/css" media="all"/>
     <link href="<s:url value='/struts/niftycorners/niftyCorners.css'/>" rel="stylesheet" type="text/css"/>
     <link href="<s:url value='/struts/niftycorners/niftyPrint.css'/>" rel="stylesheet" type="text/css" media="print"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script language="JavaScript" type="text/javascript" src="<s:url value='/struts/niftycorners/nifty.js'/>"></script>
 	<script language="JavaScript" type="text/javascript">
         window.onload = function(){
@@ -29,13 +30,12 @@
 <body id="page-home">
     <div id="page">
         <div id="header" class="clearfix">
-        	HEADER
+        	Bienvenue sur Biblioweb : Gestion de votre bibliothèque à distance!
             <hr />
         </div>
         
         <div id="content" class="clearfix">
             <div id="main">
-            	<h3>Main Content</h3>
             	<decorator:body/>
                 <hr />
             </div>
@@ -48,8 +48,7 @@
             <div id="local">
                 <h3>Local Nav. Bar</h3>
                 <ul>
-                    <li><a href="/book">Livres</a></li>
-                    <li><a href="#">Content page 2</a></li>
+                    <li><s:a action="book">Livres</s:a></li>
                     <li><a href="#">Content page 3</a></li>
                     <li><a href="#">Content page 4</a></li>
                     <li><a href="#">Content page 5</a></li>

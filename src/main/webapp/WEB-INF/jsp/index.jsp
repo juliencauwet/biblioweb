@@ -15,6 +15,18 @@
 		<s:textfield label="What is the date?" name="dateNow" />
 		<s:submit />
 	</s:form>
+
+    <table class="table">
+        <s:iterator value="books">
+            <tr>
+                <td><s:property value="authorFirstName"/></td>
+                <td><s:property value="authorName"/></td>
+                <td><s:property value="title"/></td>
+            </tr>
+        </s:iterator>
+    </table>
+
+
 </body>
 </html>
 	

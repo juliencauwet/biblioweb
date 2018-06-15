@@ -13,17 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.openclassrooms;
+package com.openclassrooms.actions;
 
 import java.util.Date;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.validator.annotations.Validation;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
-@Validation()
 @Conversion()
 public class HelloWorldAction extends ActionSupport {
     
