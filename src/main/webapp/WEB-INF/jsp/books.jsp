@@ -16,7 +16,14 @@
 
     <div class="row">
         <div class="col-md-3">
-            <s:a action="getAllBooks"/>
+            <s:a action="getAllBooks">Afficher tous les livres</s:a><br />
+
+            <s:form action="findBookByTitle">
+                <s:textfield key="title"/>
+                <s:submit/>
+            </s:form>
+
+
         </div>
 
         <div class="col-md-9">

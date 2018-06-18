@@ -25,12 +25,12 @@
         </action>
 
         <action name="getAllBooks" class="com.openclassrooms.actions.BookAction" method="getAllBooks">
-
+            <result>/WEB-INF/jsp/books.jsp</result>
         </action>
 
-
-
-
+        <action name="findBookByTitle" class="com.openclassrooms.actions.BookAction" method="getBookByTitle">
+            <result>/WEB-INF/jsp/books.jsp</result>
+        </action>
 
     </package>
 

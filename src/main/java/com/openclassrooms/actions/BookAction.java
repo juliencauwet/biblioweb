@@ -1,8 +1,8 @@
 package com.openclassrooms.actions;
 
 
+import com.openclassrooms.biblioback.ws.*;
 import com.opensymphony.xwork2.ActionSupport;
-import wstarget.openclassrooms.biblioback.ws.*;
 
 import java.util.List;
 
@@ -14,6 +14,8 @@ public class BookAction extends ActionSupport{
 
     private List<Book> books = null;
     private Book book;
+    private String title;
+
 
 
     @Override
@@ -22,13 +24,15 @@ public class BookAction extends ActionSupport{
         return SUCCESS;
     }
 
-    public String getBookByTitle(String title){
-       // booksPort.getBook(new GetBookRequest().setTitle(title));
+    public String getBookByTitle(){
+        BookGetRequest request = new BookGetRequest();
+        request.setTitle(title);
+        book = booksPort.bookGet(request).getBook();
         return SUCCESS;
     }
 
     public String getAllBooks(){
-        setBooks(booksPort.getAllBooks(new GetAllBooksRequest()).getGetAllBooks());
+        setBooks(booksPort.bookGetAll(new BookGetAllRequest()).getBookGetAll());
 
         return SUCCESS;
     }
@@ -47,5 +51,13 @@ public class BookAction extends ActionSupport{
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

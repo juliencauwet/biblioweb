@@ -1,5 +1,9 @@
 package com.openclassrooms.actions;
 
+import com.openclassrooms.biblioback.ws.Book;
+import com.openclassrooms.biblioback.ws.BookGetAllRequest;
+import com.openclassrooms.biblioback.ws.BooksPort;
+import com.openclassrooms.biblioback.ws.BooksPortService;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.Date;
@@ -8,7 +12,6 @@ import java.util.List;
 
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
-import wstarget.openclassrooms.biblioback.ws.*;
 
 
 @Conversion()
@@ -25,7 +28,7 @@ public class IndexAction extends ActionSupport {
 
         BooksPortService booksPortService = new BooksPortService();
         BooksPort booksPort = booksPortService.getBooksPortSoap11();
-        setBooks(booksPort.getAllBooks(new GetAllBooksRequest()).getGetAllBooks());
+        setBooks(booksPort.bookGetAll(new BookGetAllRequest()).getBookGetAll());
 
         return SUCCESS;
     }
