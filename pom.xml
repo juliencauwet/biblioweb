@@ -11,8 +11,9 @@
     <description>Struts 2 Starter</description>
 
     <properties>
-        <struts2.version>2.5.14.1</struts2.version>
+        <struts2.version>2.5.16</struts2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cxf.version>3.2.5  </cxf.version>
     </properties>
 
     <dependencies>
@@ -78,11 +79,43 @@
             <artifactId>dwr</artifactId>
             <version>1.1-beta-3</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-spring-boot-starter-jaxws -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
         <finalName>struts2-archetype-starter</finalName>
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/book.wsdl</wsdl>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.1</version>

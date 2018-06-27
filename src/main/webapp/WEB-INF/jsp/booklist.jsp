@@ -12,15 +12,19 @@
     <title>Title</title>
 </head>
 <body>
+
+<!-- Liste des ouvrages en fonction des critères recherchés das le formulaire
+      avec lien sur le titre qui emmène vers la description du livre -->
+
 <div class="container-fluid">
 
     <div class="row">
         <div class="col-md-3">
             <s:a action="getAllBooks">Afficher tous les livres</s:a><br />
-
-            <s:form action="findBookByTitle">
-                <s:textfield key="title"/>
-                <s:submit/>
+            <br />
+            <s:form class="form" action="findBookByTitle">
+                <s:textfield class="form-control" key="title"/>
+                <s:submit class="form-control" value="Chercher"/>
             </s:form>
 
 

@@ -1,7 +1,6 @@
 package com.openclassrooms.actions;
 
-
-import com.openclassrooms.biblioback.ws.*;
+import com.openclassrooms.biblioback.ws.book.*;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;

@@ -49,7 +49,7 @@
                 <h3>Local Nav. Bar</h3>
                 <ul>
                     <li><s:a action="book">Livres</s:a></li>
-                    <li><a href="#">Content page 3</a></li>
+                    <li><s:a action="getAllAppUsers">Utilisateurs</s:a></li>
                     <li><a href="#">Content page 4</a></li>
                     <li><a href="#">Content page 5</a></li>
                     <li><a href="#">Content page 6</a></li>

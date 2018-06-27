@@ -1,14 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: julien
-  Date: 13.06.18
-  Time: 18:21
+  Date: 27.06.18
+  Time: 11:02
   To change this template use File | Settings | File Templates.
 --%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Test</title>
+    <title>Authentification</title>
 </head>
 <body>
 

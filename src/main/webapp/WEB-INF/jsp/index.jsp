@@ -10,22 +10,25 @@
 	<s:head />
 </head>
 <body>
+    <header>
+    <!--lien vers authentification (auth.jsp)-->
+    </header>
+
+    <hr>
+    <!-- lien vers les configurations de l'appli uniquement visible par les admin -->
+
+	<!-- formulaire pour la recherche de livre par titre ou auteur
+	     avec bouton qui mène vers une page qui liste les ouvrages possibles (booklist.jsp)-->
+
+    <!-- formulaire visible uniquement pour les admins pour savoir les livres avec les retards (booklist.jsp) -->
+
+    <!-- formulaire pour rechercher un utilisateur uniquement visible par les admins (userlist.jsp)-->
+
 	<s:form action="helloWorld">
 		<s:textfield label="What is your name?" name="name" />
 		<s:textfield label="What is the date?" name="dateNow" />
 		<s:submit />
 	</s:form>
-
-    <table class="table">
-        <s:iterator value="books">
-            <tr>
-                <td><s:property value="authorFirstName"/></td>
-                <td><s:property value="authorName"/></td>
-                <td><s:property value="title"/></td>
-            </tr>
-        </s:iterator>
-    </table>
-
 
 </body>
 </html>
