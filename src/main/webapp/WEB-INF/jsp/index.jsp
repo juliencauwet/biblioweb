@@ -12,13 +12,26 @@
 <body>
     <header>
     <!--lien vers authentification (auth.jsp)-->
+        <s:a action="authentification">Authentification</s:a>
     </header>
 
-    <hr>
+    <hr />
     <!-- lien vers les configurations de l'appli uniquement visible par les admin -->
 
+    <s:a action="configuration">Configuration</s:a>
+
+    <hr />
+    <br />
 	<!-- formulaire pour la recherche de livre par titre ou auteur
 	     avec bouton qui mène vers une page qui liste les ouvrages possibles (booklist.jsp)-->
+
+
+    <s:form class="form-group" action="findBookByTitle" method="post">
+        <s:textfield class="form-control" name="title" key="title" label="Titre de l'ouvrage" />
+        <s:submit class="form-control" />
+    </s:form>
+
+
 
     <!-- formulaire visible uniquement pour les admins pour savoir les livres avec les retards (booklist.jsp) -->
 

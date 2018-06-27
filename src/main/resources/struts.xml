@@ -36,6 +36,16 @@
             <result>/WEB-INF/jsp/appuser.jsp</result>
         </action>
 
+        <action name="configuration" class="com.openclassrooms.actions.ConfigurationAction">
+            <result>/WEB-INF/jsp/config.jsp</result>
+        </action>
+
+        <action name="authentification" class="com.openclassrooms.actions.AuthentificationAction">
+            <result>/WEB-INF/jsp/auth.jsp</result>
+        </action>
+
+
+
     </package>
 
 </struts>

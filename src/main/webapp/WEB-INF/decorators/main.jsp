@@ -10,10 +10,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title><decorator:title default="Struts Starter"/></title>
-    <link href="<s:url value='/styles/main.css'/>" rel="stylesheet" type="text/css" media="all"/>
-    <link href="<s:url value='/struts/niftycorners/niftyCorners.css'/>" rel="stylesheet" type="text/css"/>
-    <link href="<s:url value='/struts/niftycorners/niftyPrint.css'/>" rel="stylesheet" type="text/css" media="print"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="<s:url value='/styles/main.css'/>" rel="stylesheet" type="text/css" media="all"/>
+
     <script language="JavaScript" type="text/javascript" src="<s:url value='/struts/niftycorners/nifty.js'/>"></script>
 	<script language="JavaScript" type="text/javascript">
         window.onload = function(){
@@ -40,13 +39,8 @@
                 <hr />
             </div>
             
-            <div id="sub">
-            	<h3>Sub Content</h3>
-            </div>
-            
-            
-            <div id="local">
-                <h3>Local Nav. Bar</h3>
+            <div id="admins">
+
                 <ul>
                     <li><s:a action="book">Livres</s:a></li>
                     <li><s:a action="getAllAppUsers">Utilisateurs</s:a></li>
@@ -55,26 +49,11 @@
                     <li><a href="#">Content page 6</a></li>
                 </ul>
             </div>
-            
-            
-            <div id="nav">
-                <div class="wrapper">
-                <h3>Nav. bar</h3>
-                <ul class="clearfix">
-                     <li><a href="#">Menu 1</a></li>
-                     <li><a href="#">Menu 2</a></li>
-                     <li><a href="#">Menu 3</a></li>
-                     <li><a href="#">Menu 4</a></li>
-                     <li><a href="#">Menu 5</a></li>
-                     <li class="last"><a href="#">Menu 6</a></li>
-                </ul>
-                </div>
-                <hr />
-            </div>
+
         </div>
         
         <div id="footer" class="clearfix">
-            Footer
+
         </div>
         
     </div>
