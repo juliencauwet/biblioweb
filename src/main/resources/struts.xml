@@ -20,8 +20,15 @@
             <result>/WEB-INF/jsp/helloWorld.jsp</result>
         </action>
 
+        <!-- Actions relatives au livres-->
+
         <action name="book" class="com.openclassrooms.actions.BookAction">
             <result>/WEB-INF/jsp/booklist.jsp</result>
+        </action>
+
+        <action name="addBook" class="com.openclassrooms.actions.BookAction" method="addBook">
+            <result>/WEB-INF/jsp/admin.jsp</result>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
         </action>
 
         <action name="getAllBooks" class="com.openclassrooms.actions.BookAction" method="getAllBooks">
@@ -32,19 +39,26 @@
             <result>/WEB-INF/jsp/booklist.jsp</result>
         </action>
 
+        <!-- Actions relatives aux utilisateurs -->
+
         <action name="getAllAppUsers" class="com.openclassrooms.actions.AppUserAction" method="getAllAppUsers">
-            <result>/WEB-INF/jsp/appuser.jsp</result>
+            <result>/WEB-INF/jsp/userlist.jsp</result>
         </action>
 
+        <!-- Actions relatives àla configuration -->
         <action name="configuration" class="com.openclassrooms.actions.ConfigurationAction">
             <result>/WEB-INF/jsp/config.jsp</result>
         </action>
 
+        <!-- Actions relatives à l'authentification -->
         <action name="authentification" class="com.openclassrooms.actions.AuthentificationAction">
             <result>/WEB-INF/jsp/auth.jsp</result>
         </action>
 
-
+        <!-- Actions relatives aux administrateurs -->
+        <action name="admin" class="com.openclassrooms.actions.AdminAction">
+            <result>/WEB-INF/jsp/admin.jsp</result>
+        </action>
 
     </package>
 

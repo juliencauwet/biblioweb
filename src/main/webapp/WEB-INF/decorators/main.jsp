@@ -27,9 +27,10 @@
     <decorator:head/>
 </head>
 <body id="page-home">
+<div class="container-fluid">
     <div id="page">
         <div id="header" class="clearfix">
-        	Bienvenue sur Biblioweb : Gestion de votre bibliothèque à distance!
+            <h4>Bienvenue sur Biblioweb : Gestion de votre bibliothèque à distance!</h4>
             <hr />
         </div>
         
@@ -60,5 +61,6 @@
     
     <div id="extra1">&nbsp;</div>
     <div id="extra2">&nbsp;</div>
+</div>
 </body>
 </html>

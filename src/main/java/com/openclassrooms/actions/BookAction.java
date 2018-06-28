@@ -1,19 +1,23 @@
 package com.openclassrooms.actions;
 
-import com.openclassrooms.biblioback.ws.book.*;
+
+import com.openclassrooms.biblioback.ws.test.*;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;
 
 public class BookAction extends ActionSupport{
 
-
-    BooksPortService booksPortService = new BooksPortService();
-    BooksPort booksPort = booksPortService.getBooksPortSoap11();
+    TestPortService service = new TestPortService();
+    TestPort testPort = service.getTestPortSoap11();
 
     private List<Book> books = null;
     private Book book;
+
     private String title;
+    private String authorFirstName;
+    private String authorName;
+    private int number;
 
 
 
@@ -26,14 +30,26 @@ public class BookAction extends ActionSupport{
     public String getBookByTitle(){
         BookGetRequest request = new BookGetRequest();
         request.setTitle(title);
-        book = booksPort.bookGet(request).getBook();
+        book = testPort.bookGet(request).getBook();
         return SUCCESS;
     }
 
     public String getAllBooks(){
-        setBooks(booksPort.bookGetAll(new BookGetAllRequest()).getBookGetAll());
-
+        setBooks(testPort.bookGetAll(new BookGetAllRequest()).getBookGetAll());
         return SUCCESS;
+    }
+
+    public String addBook() throws Exception {
+
+
+        BookAddRequest request = new BookAddRequest();
+        request.setAuthorFirstName(authorFirstName);
+        request.setAuthorName(authorName);
+        request.setTitle(title);
+        request.setAvailableNumber(number);
+
+        testPort.bookAdd(request);
+        return "success";
     }
 
     public List<Book> getBooks() {
@@ -59,4 +75,30 @@ public class BookAction extends ActionSupport{
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getAuthorFirstName() {
+        return authorFirstName;
+    }
+
+    public void setAuthorFirstName(String authorFirstName) {
+        this.authorFirstName = authorFirstName;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+
 }

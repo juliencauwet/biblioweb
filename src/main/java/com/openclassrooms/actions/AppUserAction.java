@@ -1,17 +1,17 @@
 package com.openclassrooms.actions;
 
-import com.openclassrooms.biblioback.ws.appuser.AppUser;
-import com.openclassrooms.biblioback.ws.appuser.AppUserGetAllRequest;
-import com.openclassrooms.biblioback.ws.appuser.AppUsersPort;
-import com.openclassrooms.biblioback.ws.appuser.AppUsersPortService;
+import com.openclassrooms.biblioback.ws.test.AppUser;
+import com.openclassrooms.biblioback.ws.test.AppUserGetAllRequest;
+import com.openclassrooms.biblioback.ws.test.TestPort;
+import com.openclassrooms.biblioback.ws.test.TestPortService;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;
 
 public class AppUserAction extends ActionSupport{
 
-    AppUsersPortService service = new AppUsersPortService();
-    AppUsersPort port = service.getAppUsersPortSoap11();
+    TestPortService service = new TestPortService();
+    TestPort port = service.getTestPortSoap11();
 
     List<AppUser> appUsers = null;
 
