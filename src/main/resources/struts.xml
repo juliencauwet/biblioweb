@@ -36,7 +36,7 @@
         </action>
 
         <action name="findBookByTitle" class="com.openclassrooms.actions.BookAction" method="getBookByTitle">
-            <result>/WEB-INF/jsp/booklist.jsp</result>
+            <result>/WEB-INF/jsp/bookdetail.jsp</result>
         </action>
 
         <!-- Actions relatives aux utilisateurs -->

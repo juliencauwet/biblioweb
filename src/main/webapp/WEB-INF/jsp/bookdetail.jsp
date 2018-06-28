@@ -9,11 +9,13 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>${title}</title>
+    <title><s:property value="title"/></title>
 </head>
 <body>
 
 <!--description du livre + nombre d'exemplaires disponible -->
+
+<p><s:property value="title" /> de <s:property value="authorFirstName" />   <s:property value="authorName" /></p>
 
 <!-- formulaire d'emprunt -->
 

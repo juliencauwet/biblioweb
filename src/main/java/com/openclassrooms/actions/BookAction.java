@@ -31,6 +31,9 @@ public class BookAction extends ActionSupport{
         BookGetRequest request = new BookGetRequest();
         request.setTitle(title);
         book = testPort.bookGet(request).getBook();
+        setTitle(book.getTitle());
+        setAuthorFirstName(book.getAuthorFirstName());
+        setAuthorName(book.getAuthorName());
         return SUCCESS;
     }
 
