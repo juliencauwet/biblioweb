@@ -47,8 +47,8 @@
                     <li><s:a action="index">Page d'accueil</s:a></li>
                     <li><s:a action="book">Livres</s:a></li>
                     <li><s:a action="getAllAppUsers">Utilisateurs</s:a></li>
-                    <li><s:a action="configuration">Configuraion</s:a>></li>
-                    <li><a href="#">Content page 6</a></li>
+                    <li><s:a action="admin">Administrateurs</s:a></li>
+                    <li><s:a action="authentification">Authentification</s:a></li>
                 </ul>
             </div>
 

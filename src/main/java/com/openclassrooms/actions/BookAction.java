@@ -40,11 +40,6 @@ public class BookAction extends ActionSupport{
         request.setTitle(title);
         setBooks(testPort.bookGet(request).getBookGet());
         System.out.println(books.size());
-        for (Book b : books) {
-            System.out.println(b.getAuthorFirstName());
-            System.out.println(b.getAuthorName());
-            System.out.println(b.getTitle());
-        }
 
         return SUCCESS;
     }

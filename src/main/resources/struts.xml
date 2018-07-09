@@ -65,11 +65,18 @@
             <result>/WEB-INF/jsp/auth.jsp</result>
         </action>
 
+        <action name="login" class="com.openclassrooms.actions.AuthentificationAction">
+            <result>/WEB-INF/jsp/auth.jsp</result>
+        </action>
+
+
         <!-- Actions relatives aux administrateurs -->
         <action name="admin" class="com.openclassrooms.actions.AdminAction">
             <result>/WEB-INF/jsp/admin.jsp</result>
         </action>
 
     </package>
+
+
 
 </struts>
