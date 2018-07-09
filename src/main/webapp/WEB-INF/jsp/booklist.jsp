@@ -36,7 +36,7 @@
                     <tr>
                         <td><s:property value="authorFirstName"/></td>
                         <td><s:property value="authorName"/></td>
-                        <td><s:property value="title"/></td>
+                        <td><s:a action="getBookById"><s:param name="id" value="id"/> <s:property value="title" /></s:a> </td>
                     </tr>
                 </s:iterator>
             </table>

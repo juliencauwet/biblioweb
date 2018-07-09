@@ -35,7 +35,17 @@
             <result>/WEB-INF/jsp/booklist.jsp</result>
         </action>
 
+        <action name="getBookById" class="com.openclassrooms.actions.BookAction" method="getBookById">
+            <result>/WEB-INF/jsp/bookdetail.jsp</result>
+        </action>
+
         <action name="findBookByTitle" class="com.openclassrooms.actions.BookAction" method="getBookByTitle">
+            <result>/WEB-INF/jsp/booklist.jsp</result>
+        </action>
+
+        <!-- Actions relatives aux emprunts-->
+
+        <action name="borrowThisBook" class="com.openclassrooms.actions.BorrowingAction" method="borrowThisBook">
             <result>/WEB-INF/jsp/bookdetail.jsp</result>
         </action>
 

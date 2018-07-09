@@ -9,15 +9,22 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title><s:property value="title"/></title>
+    <title><s:property value="book.title"/></title>
 </head>
 <body>
 
 <!--description du livre + nombre d'exemplaires disponible -->
 
-<p><s:property value="title" /> de <s:property value="authorFirstName" />   <s:property value="authorName" /></p>
+<p><s:property value="book.title" /> de <s:property value="book.authorFirstName" />   <s:property value="book.authorName" /></p>
 
 <!-- formulaire d'emprunt -->
+
+<s:form class="form-group" action="borrowThisBook" method="post">
+    <s:label>Empruntez ce livre</s:label>
+    <s:textfield class="form-group" key="startDate" label="Date d'emprunt" />
+    <s:submit label="Emprunter" />
+
+</s:form>
 
 <!-- message visible après requête pour savoir si la réservation a bien été effectuée ou si ce n'est pas possible-->
 

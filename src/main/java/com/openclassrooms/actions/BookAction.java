@@ -14,6 +14,7 @@ public class BookAction extends ActionSupport{
     private List<Book> books = null;
     private Book book;
 
+    private int id;
     private String title;
     private String authorFirstName;
     private String authorName;
@@ -27,13 +28,24 @@ public class BookAction extends ActionSupport{
         return SUCCESS;
     }
 
+    public String getBookById(){
+        BookGetByIdRequest request = new BookGetByIdRequest();
+        request.setId(id);
+        setBook(testPort.bookGetById(request).getBookGet());
+        return SUCCESS;
+    }
+
     public String getBookByTitle(){
         BookGetRequest request = new BookGetRequest();
         request.setTitle(title);
-        book = testPort.bookGet(request).getBook();
-        setTitle(book.getTitle());
-        setAuthorFirstName(book.getAuthorFirstName());
-        setAuthorName(book.getAuthorName());
+        setBooks(testPort.bookGet(request).getBookGet());
+        System.out.println(books.size());
+        for (Book b : books) {
+            System.out.println(b.getAuthorFirstName());
+            System.out.println(b.getAuthorName());
+            System.out.println(b.getTitle());
+        }
+
         return SUCCESS;
     }
 
@@ -49,10 +61,18 @@ public class BookAction extends ActionSupport{
         request.setAuthorFirstName(authorFirstName);
         request.setAuthorName(authorName);
         request.setTitle(title);
-        request.setAvailableNumber(number);
+        request.setNumber(number);
 
         testPort.bookAdd(request);
         return "success";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public List<Book> getBooks() {

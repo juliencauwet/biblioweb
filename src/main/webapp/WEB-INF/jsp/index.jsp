@@ -12,13 +12,8 @@
 <body>
 
 
-    <header>
-    <!--lien vers authentification (auth.jsp)-->
-        <s:a action="authentification">Authentification</s:a>
-    </header>
 
-    <!-- Lien vers espace administrateur (visible seulement par administrateur -->
-    <s:a action="admin">Espace administrateur</s:a>
+
 
 
     <br />

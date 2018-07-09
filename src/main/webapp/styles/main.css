@@ -1,12 +1,13 @@
 body{
-    color: darkslateblue;
-
+    background: darkslateblue;
+    color: floralwhite;
 }
 
 a{
     color: aqua;
 }
 
-h4{
+h4, td{
     color: floralwhite;
 }
+

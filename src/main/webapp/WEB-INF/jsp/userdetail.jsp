@@ -9,7 +9,7 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Détails concernant ${user}</title>
+    <title>Détails concernant <s:property value="appUser.firstName"/> <s:property value="appUser.name"/> </title>
 </head>
 <body>
 
