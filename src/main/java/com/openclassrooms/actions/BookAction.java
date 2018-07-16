@@ -39,7 +39,6 @@ public class BookAction extends ActionSupport{
         BookGetRequest request = new BookGetRequest();
         request.setTitle(title);
         setBooks(testPort.bookGet(request).getBookGet());
-        System.out.println(books.size());
 
         return SUCCESS;
     }
@@ -50,8 +49,6 @@ public class BookAction extends ActionSupport{
     }
 
     public String addBook() throws Exception {
-
-
         BookAddRequest request = new BookAddRequest();
         request.setAuthorFirstName(authorFirstName);
         request.setAuthorName(authorName);

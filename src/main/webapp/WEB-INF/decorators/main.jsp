@@ -27,6 +27,12 @@
     </script>
     <decorator:head/>
 </head>
+
+<header>
+    <h3>Hello <s:property value="#session['user'].email" /> </h3>
+    <s:a action="logout">Déconnexion</s:a>
+
+</header>
 <body id="page-home">
 <div class="container-fluid">
     <div id="page">
@@ -48,7 +54,7 @@
                     <li><s:a action="book">Livres</s:a></li>
                     <li><s:a action="getAllAppUsers">Utilisateurs</s:a></li>
                     <li><s:a action="admin">Administrateurs</s:a></li>
-                    <li><s:a action="authentification">Authentification</s:a></li>
+                    <li><s:a action="configuration">Configuration</s:a></li>
                 </ul>
             </div>
 

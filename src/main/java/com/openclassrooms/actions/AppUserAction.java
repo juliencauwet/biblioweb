@@ -13,6 +13,8 @@ public class AppUserAction extends ActionSupport{
     TestPortService service = new TestPortService();
     TestPort port = service.getTestPortSoap11();
 
+
+
     List<AppUser> appUsers = null;
 
     @Override

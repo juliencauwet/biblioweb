@@ -13,6 +13,12 @@
 </head>
 <body>
 
+<s:form  class="form-group" action="changeConfig" method="POST">
+    <s:textfield class="form-control" key="borrowingDuration" label="Durée de l'emprunt"/>
+    <s:textfield class="form-control" key="extensionDuration" label="Durée de prolongation d'un emprunt" />
+    <s:submit class="form-control" value="Enregistrer" />
+</s:form>
+
 
 
 </body>

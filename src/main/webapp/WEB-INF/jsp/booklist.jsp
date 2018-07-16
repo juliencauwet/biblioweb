@@ -32,11 +32,18 @@
 
         <div class="col-md-9">
             <table class="table">
+                <tr>
+                    <th>Prénom de l'auteur</th>
+                    <th>Nom de l'auteur</th>
+                    <th>Titre</th>
+                    <th>Nombre d'exemplaires disponibles</th>
+                </tr>
                 <s:iterator value="books">
                     <tr>
                         <td><s:property value="authorFirstName"/></td>
                         <td><s:property value="authorName"/></td>
                         <td><s:a action="getBookById"><s:param name="id" value="id"/> <s:property value="title" /></s:a> </td>
+                        <td><s:property value="number"/> </td>
                     </tr>
                 </s:iterator>
             </table>

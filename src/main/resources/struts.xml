@@ -60,13 +60,23 @@
             <result>/WEB-INF/jsp/config.jsp</result>
         </action>
 
+        <action name="changeConfig" class="com.openclassrooms.actions.ConfigurationAction" method="changeConfig">
+            <result>/WEB-INF/jsp/config.jsp</result>
+        </action>
+
         <!-- Actions relatives à l'authentification -->
         <action name="authentification" class="com.openclassrooms.actions.AuthentificationAction">
             <result>/WEB-INF/jsp/auth.jsp</result>
         </action>
 
-        <action name="login" class="com.openclassrooms.actions.AuthentificationAction">
+        <action name="login" class="com.openclassrooms.actions.AuthentificationAction" method="checkUserValidity">
             <result>/WEB-INF/jsp/auth.jsp</result>
+            <result name="input">/WEB-INF/jsp/auth.jsp</result>
+            <result name="error">/WEB-INF/jsp/auth.jsp</result>
+        </action>
+
+        <action name="logout" class="com.openclassrooms.actions.AuthentificationAction">
+            <result>/WEB-INF/jsp/index.jsp</result>
         </action>
 
 

@@ -13,8 +13,8 @@
     <title>Authentification</title>
 </head>
 <body>
-<s:form class="form-group" action="login" method="post"
-        onsubmit="return validate(this);">
+<s:fielderror name="invalid"/>
+<s:form class="form-group" action="login" method="post">
 
     <table width="400" border="1 floralwhite solid" align="center"
            cellpadding="0" cellspacing="0">
@@ -31,15 +31,11 @@
                     </tr>
 
                     <tr align="center">
-                        <td align="right">Identifiant utilisateur</td>
-                        <td><s:textfield class="form-control" property="username" size="30"
-                                         maxlength="30"/></td>
+                        <td><s:textfield class="form-control" key="email" label="Email utilisateur" required="true"/></td>
                     </tr>
 
                     <tr align="center">
-                        <td align="right">Mot de Passe</td>
-                        <td><s:password class="form-control" property="password" size="30"
-                                           maxlength="30"/></td>
+                        <td><s:password class="form-control" key="password" label="Mot de Passe" required="true"/></td>
                     </tr>
 <!--
                     <tr align="center">

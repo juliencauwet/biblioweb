@@ -24,6 +24,11 @@
 
                 <div class="col-md-9">
                     <table class="table">
+                        <tr>
+                            <th>Adresse Email</th>
+                            <th>Mot de Passe</th>
+                            <th>Admin?</th>
+                        </tr>
                         <s:iterator value="appUsers">
                             <tr>
                                 <td><s:property value="email"/></td>

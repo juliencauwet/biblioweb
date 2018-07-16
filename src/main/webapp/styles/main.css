@@ -11,3 +11,7 @@ h4, td{
     color: floralwhite;
 }
 
+ul{
+    list-style-type: none ;
+}
+
