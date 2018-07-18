@@ -19,6 +19,10 @@
     <s:submit class="form-control" value="Enregistrer" />
 </s:form>
 
+<hr>
+
+<p> La durée d'emprunt actuel est de <s:property value="borrowingDuration" /> semaines. La prolongation est de <s:property value="extensionDuration" /> semaines </p>
+
 
 
 </body>

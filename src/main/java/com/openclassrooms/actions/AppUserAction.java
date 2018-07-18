@@ -1,9 +1,6 @@
 package com.openclassrooms.actions;
 
-import com.openclassrooms.biblioback.ws.test.AppUser;
-import com.openclassrooms.biblioback.ws.test.AppUserGetAllRequest;
-import com.openclassrooms.biblioback.ws.test.TestPort;
-import com.openclassrooms.biblioback.ws.test.TestPortService;
+import com.openclassrooms.biblioback.ws.test.*;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.List;
@@ -12,9 +9,6 @@ public class AppUserAction extends ActionSupport{
 
     TestPortService service = new TestPortService();
     TestPort port = service.getTestPortSoap11();
-
-
-
     List<AppUser> appUsers = null;
 
     @Override

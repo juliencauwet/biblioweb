@@ -55,6 +55,7 @@
                     <li><s:a action="getAllAppUsers">Utilisateurs</s:a></li>
                     <li><s:a action="admin">Administrateurs</s:a></li>
                     <li><s:a action="configuration">Configuration</s:a></li>
+                    <li><s:a action="currentBorrowings">Emprunts</s:a></li>
                 </ul>
             </div>
 

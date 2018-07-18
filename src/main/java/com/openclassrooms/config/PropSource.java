@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Properties;
 
 public class PropSource {
@@ -21,18 +23,23 @@ public class PropSource {
 
     }
 
-    public Properties getProp() {
+    public Properties getProps() {
+
+
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+
+        URL url = classLoader.getResource("ctv.properties");
 
         try
 
         {
-            input = new FileInputStream("/Users/julien/IdeaProjects/biblioweb/src/main/resources/config.properties");
+            input = new FileInputStream(url.toURI().getPath());
 
             // load a properties file
             prop.load(input);
 
             // get the property value and print it out
-            System.out.println(prop.getProperty("extension-duration"));
+
 
 
         } catch (
@@ -40,6 +47,8 @@ public class PropSource {
 
         {
             ex.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         } finally
 
         {
@@ -58,8 +67,16 @@ public class PropSource {
 
     public void setProp(String extDur, String borDur){
         try {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
-            output = new FileOutputStream("/Users/julien/IdeaProjects/biblioweb/src/main/resources/test.properties");
+            URL url = classLoader.getResource("ctv.properties");
+            File file = new File(url.toURI().getPath());
+
+
+            String absolute = file.getCanonicalPath();
+
+            ///Users/julien/IdeaProjects/biblioweb/src/main/resources/
+            output = new FileOutputStream(url.toURI().getPath());
 
             // set the properties value
             prop.setProperty("extension-duration", extDur);
@@ -71,8 +88,9 @@ public class PropSource {
 
         } catch (IOException io) {
             io.printStackTrace();
-        }
-        finally {
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } finally {
             if (output != null) {
                 try {
                     output.close();

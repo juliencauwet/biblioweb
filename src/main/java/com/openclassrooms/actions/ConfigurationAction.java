@@ -11,30 +11,22 @@ import java.util.ResourceBundle;
 
 public class ConfigurationAction extends ActionSupport {
 
-    int BorrowingId;
     String extensionDuration;
     String borrowingDuration;
 
 
     PropSource propSource = new PropSource();
-    //Properties props = propSource.getProp();
+    Properties props = propSource.getProps();
 
     public String execute() {
-        propSource.getProp();
+        setBorrowingDuration(props.getProperty("borrowing-duration"));
+        setExtensionDuration(props.getProperty("extension-duration"));
         return SUCCESS;
     }
 
     public String changeConfig() {
         propSource.setProp(extensionDuration,borrowingDuration);
         return SUCCESS;
-    }
-
-    public int getBorrowingId() {
-        return BorrowingId;
-    }
-
-    public void setBorrowingId(int borrowingId) {
-        BorrowingId = borrowingId;
     }
 
     public String getExtensionDuration() {
