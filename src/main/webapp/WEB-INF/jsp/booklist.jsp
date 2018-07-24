@@ -9,7 +9,7 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Livres</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
             <s:a action="getAllBooks">Afficher tous les livres</s:a><br />
             <br />
             <s:form class="form" action="findBookByTitle">
-                <s:textfield class="form-control" key="title"/>
+                <s:textfield class="form-control" key="title" label="Titre de l'ouvrage"/>
                 <s:submit class="form-control" value="Chercher"/>
             </s:form>
 

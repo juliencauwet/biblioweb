@@ -10,8 +10,10 @@
 <html>
 <head>
     <title>Emprunt n° <s:property value="id" /> </title>
+
 </head>
 <body>
-
+<s:a action="extendThisBorrowing">Prolongez cet emprunt</s:a>
+<s:property value="message" />
 </body>
 </html>

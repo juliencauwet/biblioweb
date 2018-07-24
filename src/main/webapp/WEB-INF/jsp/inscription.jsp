@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: julien
-  Date: 27.06.18
-  Time: 11:02
+  Date: 24.07.18
+  Time: 11:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@taglib prefix="s" uri="/struts-tags" %>
@@ -10,11 +10,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Authentification</title>
+    <title>Inscription</title>
 </head>
 <body>
 <s:fielderror name="invalid"/>
-<s:form class="form-group" action="login" method="post">
+<s:form class="form-group" action="newAppUser" method="post">
 
     <table width="400" border="1 floralwhite solid" align="center"
            cellpadding="0" cellspacing="0">
@@ -31,11 +31,23 @@
                     </tr>
 
                     <tr align="center">
+                        <td><s:textfield class="form-control" key="name" label="Nom" required="true"/></td>
+                    </tr>
+
+                    <tr align="center">
+                        <td><s:textfield class="form-control" key="firstName" label="Prénom" required="true"/></td>
+                    </tr>
+
+                    <tr align="center">
                         <td><s:textfield class="form-control" key="email" label="Email utilisateur" required="true"/></td>
                     </tr>
 
                     <tr align="center">
                         <td><s:password class="form-control" key="password" label="Mot de Passe" required="true"/></td>
+                    </tr>
+
+                    <tr align="center">
+                        <td><s:password class="form-control" key="password" label="Confirnmation" required="true"/></td>
                     </tr>
 
                     <tr>
@@ -44,13 +56,13 @@
 
                     <tr>
                         <td align="center" colspan="2"><s:submit class="form-control" value="Identifiez-vous!"/> </td>
-                        <td><s:a action="inscription">Inscription</s:a> </td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
 </s:form>
+
 
 </body>
 </html>

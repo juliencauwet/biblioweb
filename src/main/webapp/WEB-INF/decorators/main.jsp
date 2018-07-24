@@ -29,8 +29,10 @@
 </head>
 
 <header>
+    <div class="container-fluid">
     <h3>Hello <s:property value="#session['user'].email" /> </h3>
     <s:a action="logout">Déconnexion</s:a>
+    </div>
 
 </header>
 <body id="page-home">
@@ -56,6 +58,7 @@
                     <li><s:a action="admin">Administrateurs</s:a></li>
                     <li><s:a action="configuration">Configuration</s:a></li>
                     <li><s:a action="currentBorrowings">Emprunts</s:a></li>
+                    <li><s:a action="authentification">Authentification</s:a> </li>
                 </ul>
             </div>
 

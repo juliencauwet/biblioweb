@@ -18,10 +18,10 @@
 
     <h4>Enregistrement d'un livre</h4>
     <s:form class="form-group" method="post" action="addBook">
-        <s:textfield key="authorName" class="form-control"/>
-        <s:textfield key="authorFirstName" class="form-control"/>
-        <s:textfield key="title" class="form-control"/>
-        <s:textfield key="number" class="form-control" />
+        <s:textfield key="authorName" label = "Nom de l'auteur" class="form-control"/>
+        <s:textfield key="authorFirstName" label = "Prénom de l'auteur" class="form-control"/>
+        <s:textfield key="title" label = "Titre du livre" class="form-control"/>
+        <s:textfield key="number" class="Nombre" />
         <s:submit class="form-control" />
     </s:form >
 

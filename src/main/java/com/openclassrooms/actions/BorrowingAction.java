@@ -22,9 +22,11 @@ public class BorrowingAction extends ActionSupport {
     Properties props = propSource.getProps();
 
     Date startDate;
+    //String strStartDate = changeDateFormat(startDate);
     String message = "";
     List<Borrowing> borrowings = null;
     Borrowing borrowing;
+
 
     private int id;
     private AppUser appUser;
@@ -49,12 +51,6 @@ public class BorrowingAction extends ActionSupport {
         // exemple à changer
         request.setUserId(7);
         setBorrowings(testPort.borrowingGetCurrent(request).getBorrowingGetCurrent());
-        for (Borrowing bor: borrowings){
-            System.out.println(bor.getId());
-            System.out.println(bor.getAppUser().getEmail());
-            System.out.println(bor.getBook().getTitle());
-            System.out.println(bor.getDueReturnDate());
-        }
         return SUCCESS;
     }
 
@@ -140,6 +136,14 @@ public class BorrowingAction extends ActionSupport {
         this.startDate = startDate;
     }
 
+   // public String getStrStartDate() {
+   //     return strStartDate;
+   // }
+//
+   // public void setStrStartDate(String strStartDate) {
+   //     this.strStartDate = strStartDate;
+   // }
+
     public String getMessage() {
         return message;
     }
@@ -164,7 +168,17 @@ public class BorrowingAction extends ActionSupport {
         this.borrowing = borrowing;
     }
 
+    public String changeDateFormat(Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String newFormat = sdf.format(date);
+        return newFormat;
+    }
 
+    public Date xmlGregToDate(XMLGregorianCalendar calendar){
+        GregorianCalendar cal = calendar.toGregorianCalendar();
+        Date date = cal.getTime();
+        return date;
+    }
     /*
      //convertit la date échéance de retour de xmlGregorianCal en GregorianCal puis ajoute la durée de l'extension dans
            GregorianCalendar calendar = borrowing.getDueReturnDate().toGregorianCalendar();
