@@ -15,11 +15,6 @@
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
 
-        <action name="helloWorld" class="com.openclassrooms.actions.HelloWorldAction">
-            <result name="input">WEB-INF/jsp/index.jsp</result>
-            <result>/WEB-INF/jsp/helloWorld.jsp</result>
-        </action>
-
         <!-- Actions relatives au livres-->
 
         <action name="book" class="com.openclassrooms.actions.BookAction">

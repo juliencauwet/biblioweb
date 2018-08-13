@@ -2,6 +2,7 @@ package com.openclassrooms.actions;
 
 import com.openclassrooms.biblioback.ws.test.*;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
@@ -24,6 +25,8 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
     String hashedPassword;
     AppUser appUser;
 
+    private SessionMap<String, Object> sessionMap;
+
     public String execute(){
         return SUCCESS;
     }
@@ -33,7 +36,8 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
         request.setFirstName(firstName);
         request.setName(name);
         request.setEmail(email);
-        request.setPassword(toHashPassword(password));
+        //request.setPassword(toHashPassword(password));
+        request.setPassword(password);
         if(testPort.appUserAdd(request).isConfirmation())
             return SUCCESS;
         else
@@ -45,9 +49,10 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
 
         AppUserValidityCheckRequest request = new AppUserValidityCheckRequest();
         request.setEmail(email);
-        request.setPassword(toHashPassword(password));
+        //request.setPassword(toHashPassword(password));
+        request.setPassword(password);
         try {
-            System.out.println(testPort.appUserValidityCheck(request).getUser().getEmail());
+            log.info(testPort.appUserValidityCheck(request).getUser().getEmail());
             setAppUser(testPort.appUserValidityCheck(request).getUser());
             log.info("L'utilisateur est bien enregistré");
         }catch (NullPointerException e){
@@ -61,8 +66,12 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
             return ERROR;
         }
 
-        if (appUser.getEmail().equals(email) && appUser.getPassword().equals(password))
+        if (appUser.getEmail().equals(email) && appUser.getPassword().equals(password)) {
+            sessionMap.put("appUser", appUser);
+            sessionMap.put("email", appUser.getEmail());
+            sessionMap.put("firstName", appUser.getFirstName());
             return SUCCESS;
+        }
         else
             return INPUT;
     }
@@ -116,8 +125,8 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
     }
 
     @Override
-    public void setSession(Map<String, Object> session) {
-
+    public void setSession(Map<String, Object> map) {
+        sessionMap=(SessionMap)map;
     }
 
     private String toHashPassword(String password){

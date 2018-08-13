@@ -21,8 +21,8 @@
 
 <s:form class="form-group" action="borrowThisBook" method="post">
     <s:label>Empruntez ce livre</s:label>
-    <input type="date" name="startDate" value="Date de départ">
-    <s:submit value="Emprunter" />
+    <input class="form-control" type="date" name="startDate" value="Date de départ">
+    <s:submit class="form-control" value="Emprunter" />
 </s:form>
 
 <!-- message visible après requête pour savoir si la réservation a bien été effectuée ou si ce n'est pas possible-->

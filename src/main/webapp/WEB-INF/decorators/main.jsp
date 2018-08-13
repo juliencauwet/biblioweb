@@ -30,7 +30,7 @@
 
 <header>
     <div class="container-fluid">
-    <h3>Hello <s:property value="#session['user'].email" /> </h3>
+    <h3>Hello <s:property value="#session.firstName" /> </h3>
     <s:a action="logout">Déconnexion</s:a>
     </div>
 
