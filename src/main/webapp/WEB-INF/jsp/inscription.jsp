@@ -47,7 +47,7 @@
                     </tr>
 
                     <tr align="center">
-                        <td><s:password class="form-control" key="password" label="Confirnmation" required="true"/></td>
+                        <td><s:password class="form-control" key="password2" label="Confirnmation" required="true"/></td>
                     </tr>
 
                     <tr>

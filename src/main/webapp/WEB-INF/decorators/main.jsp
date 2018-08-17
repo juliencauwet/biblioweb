@@ -30,9 +30,26 @@
 
 <header>
     <div class="container-fluid">
-    <h3>Hello <s:property value="#session.firstName" /> </h3>
-    <s:a action="logout">Déconnexion</s:a>
+       <s:if test="#session.appUser">
+            <h3>Hello <s:property value="#session.firstName" /> </h3>
+            <s:a action="logout">Déconnexion</s:a>
+       </s:if>
+        <s:else>
+            <s:a action="authentification">Connexion</s:a>
+        </s:else>
     </div>
+    
+    <s:if test="hasActionErrors()">
+        <div class = "errors">
+            <s:actionerror/>
+        </div>
+    </s:if>
+
+    <s:if test="hasActionMessages()">
+        <div class="success">
+            <s:actionmessage/>
+        </div>
+    </s:if>
 
 </header>
 <body id="page-home">
@@ -48,20 +65,30 @@
             	<decorator:body/>
                 <hr />
             </div>
-            
-            <div id="admins">
 
+            <div class="row">
+                <div id="allusers" class="col-md-3">
                 <ul>
                     <li><s:a action="index">Page d'accueil</s:a></li>
                     <li><s:a action="book">Livres</s:a></li>
                     <li><s:a action="getAllAppUsers">Utilisateurs</s:a></li>
-                    <li><s:a action="admin">Administrateurs</s:a></li>
-                    <li><s:a action="configuration">Configuration</s:a></li>
                     <li><s:a action="currentBorrowings">Emprunts</s:a></li>
                     <li><s:a action="authentification">Authentification</s:a> </li>
+                    </br>
                 </ul>
-            </div>
+                </div>
 
+            <div id="admins" class="col-md-3">
+                <s:if test="#session.isAdmin">
+                    <h3>Espace Administrateurs</h3>
+                    <s:a action="admin">Enregistrement d'un ouvrage</s:a>
+                    <s:a action="configuration">Configuration</s:a>
+                </s:if>
+                <s:else>
+                    <p>Désolé, t'es pas admin!</p>
+                </s:else>
+            </div>
+            </div>
         </div>
         
         <div id="footer" class="clearfix">

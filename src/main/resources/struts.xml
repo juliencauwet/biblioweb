@@ -42,6 +42,7 @@
 
         <action name="borrowThisBook" class="com.openclassrooms.actions.BorrowingAction" method="borrowThisBook">
             <result>/WEB-INF/jsp/bookdetail.jsp</result>
+            <result name="input">/WEB-INF/jsp/auth.jsp</result>
         </action>
 
         <action name="currentBorrowings" class="com.openclassrooms.actions.BorrowingAction" method="getCurrentBorrowings">
@@ -81,20 +82,22 @@
 
         <action name="inscription" class="com.openclassrooms.actions.AuthentificationAction">
             <result>/WEB-INF/jsp/inscription.jsp</result>
+
         </action>
 
         <action name="newAppUser" class="com.openclassrooms.actions.AuthentificationAction" method="newAppUser">
             <result>/WEB-INF/jsp/index.jsp</result>
-            <result name="input">/WEB-INF/jsp/auth.jsp</result>
+            <result name="input">/WEB-INF/jsp/inscription.jsp</result>
+            <result name="error">/WEB-INF/jsp/inscription.jsp</result>
         </action>
 
         <action name="login" class="com.openclassrooms.actions.AuthentificationAction" method="checkUserValidity">
-            <result>/WEB-INF/jsp/auth.jsp</result>
+            <result>/WEB-INF/jsp/index.jsp</result>
             <result name="input">/WEB-INF/jsp/auth.jsp</result>
             <result name="error">/WEB-INF/jsp/auth.jsp</result>
         </action>
 
-        <action name="logout" class="com.openclassrooms.actions.AuthentificationAction">
+        <action name="logout" class="com.openclassrooms.actions.AuthentificationAction"  method="logout">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
 

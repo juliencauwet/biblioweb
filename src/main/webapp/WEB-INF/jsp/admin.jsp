@@ -26,11 +26,6 @@
     </s:form >
 
 <hr />
-<!-- lien vers les configurations de l'appli uniquement visible par les admin -->
-
-<s:a action="configuration">Configuration</s:a>
-
-<hr />
 
 <!-- lien visible uniquement pour les admins pour savoir les livres avec les retards (booklist.jsp) -->
 
@@ -38,12 +33,7 @@
 
 <!-- formulaire pour rechercher un utilisateur uniquement visible par les admins (userlist.jsp)-->
 
-<s:form class="form-group" action="helloWorld">
-    <s:textfield class="form-control" label="What is your name?" name="name" />
-    <s:textfield class="form-control" label="What is the date?" name="dateNow" />
-    <br />
-    <s:submit class="form-control"/>
-</s:form>
+
 
 </body>
 </html>

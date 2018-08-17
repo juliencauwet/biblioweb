@@ -3,9 +3,11 @@ package com.openclassrooms.actions;
 import com.openclassrooms.biblioback.ws.test.*;
 import com.openclassrooms.config.PropSource;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpSession;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.text.SimpleDateFormat;
@@ -22,15 +24,15 @@ public class BorrowingAction extends ActionSupport {
     Properties props = propSource.getProps();
 
     Date startDate;
-    //String strStartDate = changeDateFormat(startDate);
     String message = "";
     List<Borrowing> borrowings = null;
     Borrowing borrowing;
 
-
+    HttpSession session = ServletActionContext.getRequest().getSession(false);
     private int id;
-    private AppUser appUser;
+    private AppUser appUser = (AppUser)session.getAttribute("appUser");
     private Book book;
+    private int bookId;
 
 
     @Override
@@ -48,13 +50,18 @@ public class BorrowingAction extends ActionSupport {
     public String getCurrentBorrowings(){
         log.info("Entrée dans getCurrentBorrowings");
         BorrowingGetCurrentRequest request = new BorrowingGetCurrentRequest();
+        AppUser appUser = (AppUser)session.getAttribute("appUser");
         // exemple à changer
-        request.setUserId(7);
+        request.setUserId(appUser.getId());
         setBorrowings(testPort.borrowingGetCurrent(request).getBorrowingGetCurrent());
         return SUCCESS;
     }
 
     public String borrowThisBook() {
+
+        if(session == null || session.getAttribute("appUser") == null)
+            return LOGIN;
+
         BorrowingAddRequest request = new BorrowingAddRequest();
         XMLGregorianCalendar xmlCalendar = null;
         GregorianCalendar calendar = new GregorianCalendar();
@@ -62,9 +69,12 @@ public class BorrowingAction extends ActionSupport {
         xmlCalendar = toXmlGregorianCalendar(calendar);
 
         request.setStartDate(xmlCalendar);
+        request.setAppUserId(appUser.getId());
+
+        request.setBookId(bookId);
 
         if (testPort.borrowingAdd(request).isConfirmation())
-            setMessage("L'emprunt a bien été enregistré. Veuillez s'il vous plait le retourner avant le ");
+            setMessage("L'emprunt a bien été enregistré. Veuillez s'il vous plait le retourner avant le " );
         else
             setMessage("L'emprunt n'a pas pu être effectué");
 
@@ -166,6 +176,14 @@ public class BorrowingAction extends ActionSupport {
 
     public void setBorrowing(Borrowing borrowing) {
         this.borrowing = borrowing;
+    }
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public String changeDateFormat(Date date){

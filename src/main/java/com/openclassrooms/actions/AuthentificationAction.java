@@ -22,8 +22,10 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
     String name;
     String email;
     String password;
+    String password2;
     String hashedPassword;
     AppUser appUser;
+    Boolean isAdmin;
 
     private SessionMap<String, Object> sessionMap;
 
@@ -32,16 +34,40 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
     }
 
     public String newAppUser(){
+
+        if (!password.equals(password2)){
+            addActionError("La confirmation doit être identique au mot de passe.");
+            log.info("Les mots de passe entrés ne sont pas identiques");
+            return ERROR;
+        }
+
         AppUserAddRequest request = new AppUserAddRequest();
         request.setFirstName(firstName);
         request.setName(name);
         request.setEmail(email);
-        //request.setPassword(toHashPassword(password));
         request.setPassword(password);
-        if(testPort.appUserAdd(request).isConfirmation())
+        request.setIsAdmin(isAdmin);
+
+        if(testPort.appUserAdd(request).isConfirmation()) {
+            AppUserValidityCheckRequest validityCheckRequest= new AppUserValidityCheckRequest();
+            validityCheckRequest.setEmail(email);
+            validityCheckRequest.setPassword(password);
+            setAppUser(testPort.appUserValidityCheck(validityCheckRequest).getUser());
+
+            sessionMap.put("appUser", appUser);
+            sessionMap.put("email", appUser.getEmail());
+            sessionMap.put("firstName",firstName);
+            sessionMap.put("isAdmin", isAdmin);
+
+            addActionMessage("Utilisateur enregistré avec succès");
+
             return SUCCESS;
-        else
+
+        }else {
+            log.info("Erreur dans les informations");
+            addActionError("Veuillez entrer les informations demandées.");
             return INPUT;
+        }
 
     }
 
@@ -49,17 +75,16 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
 
         AppUserValidityCheckRequest request = new AppUserValidityCheckRequest();
         request.setEmail(email);
-        //request.setPassword(toHashPassword(password));
         request.setPassword(password);
+
         try {
             log.info(testPort.appUserValidityCheck(request).getUser().getEmail());
             setAppUser(testPort.appUserValidityCheck(request).getUser());
             log.info("L'utilisateur est bien enregistré");
         }catch (NullPointerException e){
-            addActionError("Il n'y a pas d'user");
-            System.out.println("pas d'utilisateur");
+            addActionError("Il n'y a pas d'utilisteur");
+            log.info("pas d'utilisateur");
         }
-
 
         if (appUser == null) {
             addActionError("il n'y a pas d'utilisateur");
@@ -70,10 +95,17 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
             sessionMap.put("appUser", appUser);
             sessionMap.put("email", appUser.getEmail());
             sessionMap.put("firstName", appUser.getFirstName());
+            sessionMap.put("isAdmin", appUser.isIsAdmin());
+
             return SUCCESS;
         }
         else
             return INPUT;
+    }
+
+    public String logout(){
+        sessionMap.invalidate();
+        return SUCCESS;
     }
 
     public String getEmail() {
@@ -90,6 +122,14 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
 
     public String getHashedPassword() {
@@ -124,15 +164,22 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
         this.name = name;
     }
 
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
     @Override
     public void setSession(Map<String, Object> map) {
         sessionMap=(SessionMap)map;
+
     }
 
-    private String toHashPassword(String password){
+    private String toHashPassword(String password) {
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         return hashed;
     }
-
-
 }

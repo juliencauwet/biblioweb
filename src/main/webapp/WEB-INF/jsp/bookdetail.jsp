@@ -20,7 +20,9 @@
 <!-- formulaire d'emprunt -->
 
 <s:form class="form-group" action="borrowThisBook" method="post">
-    <s:label>Empruntez ce livre</s:label>
+    <s:label>Empruntez <s:property value="book.title"/> id n°<s:property value="book.id"/> </s:label>
+    <s:hidden name="bookId" value="%{book.id}"/>
+
     <input class="form-control" type="date" name="startDate" value="Date de départ">
     <s:submit class="form-control" value="Emprunter" />
 </s:form>

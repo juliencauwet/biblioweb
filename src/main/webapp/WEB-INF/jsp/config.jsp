@@ -21,7 +21,7 @@
 
 <hr>
 
-<p> La durée d'emprunt actuel est de <s:property value="borrowingDuration" /> semaines. La prolongation est de <s:property value="extensionDuration" /> semaines </p>
+<p> La durée d'emprunt actuelle est de <s:property value="borrowingDuration" /> semaines. La prolongation est de <s:property value="extensionDuration" /> semaines </p>
 
 
 
