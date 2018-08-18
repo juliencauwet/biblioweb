@@ -14,7 +14,6 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
 
     private static final Logger log = LoggerFactory.getLogger(AuthentificationAction.class);
 
-
     TestPortService service = new TestPortService();
     TestPort testPort = service.getTestPortSoap11();
 
@@ -46,7 +45,6 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
         request.setName(name);
         request.setEmail(email);
         request.setPassword(password);
-        request.setIsAdmin(isAdmin);
 
         if(testPort.appUserAdd(request).isConfirmation()) {
             AppUserValidityCheckRequest validityCheckRequest= new AppUserValidityCheckRequest();
@@ -82,7 +80,7 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
             setAppUser(testPort.appUserValidityCheck(request).getUser());
             log.info("L'utilisateur est bien enregistré");
         }catch (NullPointerException e){
-            addActionError("Il n'y a pas d'utilisteur");
+            addActionError("Il n'y a pas d'utilisateur");
             log.info("pas d'utilisateur");
         }
 

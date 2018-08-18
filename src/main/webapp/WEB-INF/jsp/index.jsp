@@ -10,8 +10,6 @@
 	<s:head />
 </head>
 <body>
-
-    <br />
 	<!-- formulaire pour la recherche de livre par titre ou auteur
 	     avec bouton qui mène vers une page qui liste les ouvrages possibles (booklist.jsp)-->
 

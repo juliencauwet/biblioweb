@@ -13,7 +13,6 @@
     <title>Authentification</title>
 </head>
 <body>
-<s:fielderror name="invalid"/>
 <s:form class="form-group" action="login" method="post">
 
     <table width="400" border="1 floralwhite solid" align="center"
@@ -23,7 +22,7 @@
                 <table border="0" cellspacing="2"
                        cellpadding="1" width="100%">
                     <tr bgcolor="#eaeac8">
-                        <td align="left" colspan="2">Authentification utilisateur</td>
+                        <label class="form-control">Authentification</label>
                     </tr>
 
                     <tr>

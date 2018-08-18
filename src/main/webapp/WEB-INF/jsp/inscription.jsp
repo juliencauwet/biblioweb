@@ -23,7 +23,7 @@
                 <table border="0" cellspacing="2"
                        cellpadding="1" width="100%">
                     <tr bgcolor="#eaeac8">
-                        <td align="left" colspan="2">Authentification utilisateur</td>
+                        <label class="form-control">Inscription</label>
                     </tr>
 
                     <tr>
@@ -47,7 +47,7 @@
                     </tr>
 
                     <tr align="center">
-                        <td><s:password class="form-control" key="password2" label="Confirnmation" required="true"/></td>
+                        <td><s:password class="form-control" key="password2" label="Confirmation" required="true"/></td>
                     </tr>
 
                     <tr>
@@ -55,7 +55,7 @@
                     </tr>
 
                     <tr>
-                        <td align="center" colspan="2"><s:submit class="form-control" value="Identifiez-vous!"/> </td>
+                        <td align="center" colspan="2"><s:submit class="form-control" value="Inscrivez-vous!"/> </td>
                     </tr>
                 </table>
             </td>

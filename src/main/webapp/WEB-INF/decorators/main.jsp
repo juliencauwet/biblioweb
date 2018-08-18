@@ -38,18 +38,6 @@
             <s:a action="authentification">Connexion</s:a>
         </s:else>
     </div>
-    
-    <s:if test="hasActionErrors()">
-        <div class = "errors">
-            <s:actionerror/>
-        </div>
-    </s:if>
-
-    <s:if test="hasActionMessages()">
-        <div class="success">
-            <s:actionmessage/>
-        </div>
-    </s:if>
 
 </header>
 <body id="page-home">
@@ -59,7 +47,20 @@
             <h4>Bienvenue sur Biblioweb : Gestion de votre bibliothèque à distance!</h4>
             <hr />
         </div>
-        
+
+        <s:if test="hasActionErrors()">
+            <div class = "errors">
+                <s:actionerror/>
+            </div>
+        </s:if>
+
+        <s:if test="hasActionMessages()">
+            <div class="success">
+                <s:actionmessage/>
+            </div>
+        </s:if>
+
+
         <div id="content" class="clearfix">
             <div id="main">
             	<decorator:body/>
@@ -71,22 +72,18 @@
                 <ul>
                     <li><s:a action="index">Page d'accueil</s:a></li>
                     <li><s:a action="book">Livres</s:a></li>
-                    <li><s:a action="getAllAppUsers">Utilisateurs</s:a></li>
                     <li><s:a action="currentBorrowings">Emprunts</s:a></li>
-                    <li><s:a action="authentification">Authentification</s:a> </li>
                     </br>
                 </ul>
                 </div>
 
             <div id="admins" class="col-md-3">
                 <s:if test="#session.isAdmin">
-                    <h3>Espace Administrateurs</h3>
-                    <s:a action="admin">Enregistrement d'un ouvrage</s:a>
-                    <s:a action="configuration">Configuration</s:a>
+                    <h2>Espace Administrateurs</h2>
+                    <s:a action="admin">Enregistrement d'un ouvrage</s:a><br/>
+                    <s:a action="configuration">Configuration</s:a><br/>
+                    <s:a action="getAllAppUsers">Utilisateurs</s:a><br/>
                 </s:if>
-                <s:else>
-                    <p>Désolé, t'es pas admin!</p>
-                </s:else>
             </div>
             </div>
         </div>

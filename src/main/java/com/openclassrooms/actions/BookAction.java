@@ -56,7 +56,9 @@ public class BookAction extends ActionSupport{
         request.setNumber(number);
 
         testPort.bookAdd(request);
-        return "success";
+        addActionMessage(number +" ouvrage(s) de" + title + " de l'auteur " + authorFirstName + " " + authorName + " a/ont été enregistré(s)");
+
+        return SUCCESS;
     }
 
     public int getId() {

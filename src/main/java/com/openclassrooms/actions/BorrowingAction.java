@@ -34,7 +34,6 @@ public class BorrowingAction extends ActionSupport {
     private Book book;
     private int bookId;
 
-
     @Override
     public String execute() throws Exception {
         return SUCCESS;
@@ -49,9 +48,13 @@ public class BorrowingAction extends ActionSupport {
 
     public String getCurrentBorrowings(){
         log.info("Entrée dans getCurrentBorrowings");
+        if(session == null || session.getAttribute("appUser") == null) {
+            addActionError("Veuillez vous identifier pour pouvoir consulter la liste de vos emprunts.");
+            return LOGIN;
+        }
         BorrowingGetCurrentRequest request = new BorrowingGetCurrentRequest();
         AppUser appUser = (AppUser)session.getAttribute("appUser");
-        // exemple à changer
+
         request.setUserId(appUser.getId());
         setBorrowings(testPort.borrowingGetCurrent(request).getBorrowingGetCurrent());
         return SUCCESS;
@@ -59,24 +62,28 @@ public class BorrowingAction extends ActionSupport {
 
     public String borrowThisBook() {
 
-        if(session == null || session.getAttribute("appUser") == null)
+        if(session == null || session.getAttribute("appUser") == null) {
+            addActionError("Veuillez vous identifier pour pouvoir effectuer un emprunt.");
             return LOGIN;
+        }
 
         BorrowingAddRequest request = new BorrowingAddRequest();
-        XMLGregorianCalendar xmlCalendar = null;
+        XMLGregorianCalendar xmlCalendar;
         GregorianCalendar calendar = new GregorianCalendar();
         calendar.setTime(startDate);
         xmlCalendar = toXmlGregorianCalendar(calendar);
 
         request.setStartDate(xmlCalendar);
         request.setAppUserId(appUser.getId());
+        request.setDueReturnDate(toXmlGregorianCalendar(setDRD(calendar)));
+
 
         request.setBookId(bookId);
 
         if (testPort.borrowingAdd(request).isConfirmation())
-            setMessage("L'emprunt a bien été enregistré. Veuillez s'il vous plait le retourner avant le " );
+            setMessage("L'emprunt a bien été enregistré. Veuillez s'il vous plait le retourner avant le " + setDRD(calendar).getTime());
         else
-            setMessage("L'emprunt n'a pas pu être effectué");
+            setMessage("L'emprunt n'a pas pu être effectué.");
 
         return SUCCESS;
     }
@@ -146,14 +153,6 @@ public class BorrowingAction extends ActionSupport {
         this.startDate = startDate;
     }
 
-   // public String getStrStartDate() {
-   //     return strStartDate;
-   // }
-//
-   // public void setStrStartDate(String strStartDate) {
-   //     this.strStartDate = strStartDate;
-   // }
-
     public String getMessage() {
         return message;
     }
@@ -197,11 +196,10 @@ public class BorrowingAction extends ActionSupport {
         Date date = cal.getTime();
         return date;
     }
-    /*
-     //convertit la date échéance de retour de xmlGregorianCal en GregorianCal puis ajoute la durée de l'extension dans
-           GregorianCalendar calendar = borrowing.getDueReturnDate().toGregorianCalendar();
+
+     public GregorianCalendar setDRD(GregorianCalendar calendar){
            calendar.add(Calendar.DAY_OF_MONTH,7 * (Integer.parseInt(props.getProperty("extension-duration"))));
-           borrowing.setDueReturnDate(toXmlGregorianCalendar(calendar));
-     */
+           return calendar;
+     }
 
 }

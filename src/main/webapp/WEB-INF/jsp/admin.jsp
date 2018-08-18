@@ -10,7 +10,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Espace Administrateurs</title>
+    <title>Enregistrer un ouvrage</title>
 </head>
 <body>
 
@@ -21,11 +21,9 @@
         <s:textfield key="authorName" label = "Nom de l'auteur" class="form-control"/>
         <s:textfield key="authorFirstName" label = "Prénom de l'auteur" class="form-control"/>
         <s:textfield key="title" label = "Titre du livre" class="form-control"/>
-        <s:textfield key="number" class="Nombre" />
+        <s:textfield key="number" label = "Nombre" class="form-control"/>
         <s:submit class="form-control" />
     </s:form >
-
-<hr />
 
 <!-- lien visible uniquement pour les admins pour savoir les livres avec les retards (booklist.jsp) -->
 
