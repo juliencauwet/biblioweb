@@ -131,6 +131,27 @@
                 </configuration>
             </plugin>
 
+            <!--
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+
+                        <configuration>
+                            <bindingDirectory>/src/main/java/com/openclassrooms/biblioback/</bindingDirectory>
+                            <wsdlUrls>
+                                <wsdlUrl>http://localhost:8080/ws/test.wsdl</wsdlUrl>
+                            </wsdlUrls>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
 
             <!--
                 <plugin>

@@ -39,11 +39,7 @@ public class PropSource {
             prop.load(input);
 
             // get the property value and print it out
-
-
-
-        } catch (
-                IOException ex)
+        } catch (IOException ex)
 
         {
             ex.printStackTrace();
