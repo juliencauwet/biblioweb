@@ -143,7 +143,7 @@
                         </goals>
 
                         <configuration>
-                            <bindingDirectory>/src/main/java/com/openclassrooms/biblioback/</bindingDirectory>
+                            <bindingDirectory>/src/main/java</bindingDirectory>
                             <wsdlUrls>
                                 <wsdlUrl>http://localhost:8080/ws/test.wsdl</wsdlUrl>
                             </wsdlUrls>
