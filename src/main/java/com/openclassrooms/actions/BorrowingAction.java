@@ -24,7 +24,7 @@ public class BorrowingAction extends ActionSupport {
     PropSource propSource = new PropSource();
     Properties props = propSource.getProps();
 
-    private Date startDate;
+    private Date startDate = new Date();
 
     private String message = "";
     private List<Borrowing> borrowings = null;
@@ -79,11 +79,10 @@ public class BorrowingAction extends ActionSupport {
         request.setAppUserId(appUser.getId());
         request.setDueReturnDate(toXmlGregorianCalendar(setDRD(calendar)));
 
-
         request.setBookId(bookId);
 
         if (testPort.borrowingAdd(request).isConfirmation())
-            setMessage("L'emprunt a bien été enregistré. Veuillez s'il vous plait le retourner avant le " + setDRD(calendar).getTime());
+            setMessage("L'emprunt a bien été enregistré. Veuillez s'il vous plait le retourner avant le " + calendar.getTime());
         else
             setMessage("L'emprunt n'a pas pu être effectué.");
 

@@ -25,7 +25,7 @@
             <s:label>Empruntez <s:property value="book.title"/></s:label>
 
             <s:hidden name="bookId" value="%{book.id}"/>
-            <input class="form-control" type="date" name="startDate" value="Date de départ"/>
+            <!-- <input class="form-control" type="date" name="startDate" value="Date de départ"/> -->
             <s:submit class="form-control" value="Emprunter" />
         </s:form>
 
