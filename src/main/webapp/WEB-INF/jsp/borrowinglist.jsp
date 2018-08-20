@@ -41,7 +41,6 @@
                         <td><s:property value="book.title"/></td>
                         <td><s:property value="startDate" /> </td>
                         <td><s:property value="dueReturnDate"/> </td>
-
                     </tr>
                 </s:iterator>
             </table>

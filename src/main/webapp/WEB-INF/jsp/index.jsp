@@ -22,6 +22,8 @@
         <s:submit class="form-control" />
     </s:form>
 
+    <div><s:property value="strNow"/> </div>
+
 
 
 

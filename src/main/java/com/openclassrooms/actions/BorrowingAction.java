@@ -17,16 +17,18 @@ public class BorrowingAction extends ActionSupport {
 
     private static final Logger log = LoggerFactory.getLogger(BorrowingAction.class);
 
+    //WebService
     TestPortService service = new TestPortService();
     TestPort testPort = service.getTestPortSoap11();
-
+    //Properties loading
     PropSource propSource = new PropSource();
     Properties props = propSource.getProps();
 
-    Date startDate;
-    String message = "";
-    List<Borrowing> borrowings = null;
-    Borrowing borrowing;
+    private Date startDate;
+
+    private String message = "";
+    private List<Borrowing> borrowings = null;
+    private Borrowing borrowing;
 
     HttpSession session = ServletActionContext.getRequest().getSession(false);
     private int id;
@@ -91,6 +93,7 @@ public class BorrowingAction extends ActionSupport {
     public String extend() {
         BorrowingExtendRequest request = new BorrowingExtendRequest();
         BorrowingGetRequest getRequest = new BorrowingGetRequest();
+        GregorianCalendar calendar = new GregorianCalendar();
 
         //recherche l'emprunt par l'id
         getRequest.setId(id);
@@ -98,28 +101,20 @@ public class BorrowingAction extends ActionSupport {
 
         //Envoie les variables à la requête pour recevoir le code réponse
         request.setBorrowingId(id);
-        request.setExtensionTime(7 * Integer.parseInt(props.getProperty("extension-duration")));
+        request.setNewDueReturnDate(toXmlGregorianCalendar(setDRD(borrowing.getDueReturnDate().toGregorianCalendar())));
+        //7 * Integer.parseInt(props.getProperty("extension-duration")))
         int codeResp = testPort.borrowingExtend(request).getCodeResp();
 
         if(codeResp == 1 ) {
-           message = "L'emprunt a été prolongé avec succès au ";
+           borrowing = testPort.borrowingGet(getRequest).getBorrowing();
+           message = "L'emprunt a été prolongé avec succès au " + borrowing.getDueReturnDate();
         }else if (codeResp == 2){
-           message = "Le prolongement de l'emprunt n'a pas pu être effectué " ;
-           return ERROR;
+           addActionError("Le prolongement de l'emprunt n'a pas pu être effectué. Une seule prolongation est autorisée");
         }
         return SUCCESS;
     }
 
-    public XMLGregorianCalendar toXmlGregorianCalendar(GregorianCalendar cal){
-        try {
-            DatatypeFactory dataTypeFactory = DatatypeFactory.newInstance();
-            XMLGregorianCalendar calendar = dataTypeFactory.newXMLGregorianCalendar(cal);
-            return calendar;
-        } catch (Exception e) {
-            log.error("Exception dans la conversion XMLGregorianCalendar \n" + e);
-            return null;
-        }
-    }
+
 
     public int getId() {
         return id;
@@ -185,6 +180,17 @@ public class BorrowingAction extends ActionSupport {
         this.bookId = bookId;
     }
 
+
+    public XMLGregorianCalendar toXmlGregorianCalendar(GregorianCalendar cal){
+        try {
+            DatatypeFactory dataTypeFactory = DatatypeFactory.newInstance();
+            XMLGregorianCalendar calendar = dataTypeFactory.newXMLGregorianCalendar(cal);
+            return calendar;
+        } catch (Exception e) {
+            log.error("Exception dans la conversion XMLGregorianCalendar \n" + e);
+            return null;
+        }
+    }
     public String changeDateFormat(Date date){
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String newFormat = sdf.format(date);
