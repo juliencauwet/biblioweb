@@ -40,7 +40,12 @@
                         <td><s:property value="appUser.firstName"/> <s:property value="appUser.name"/> </td>
                         <td><s:property value="book.title"/></td>
                         <td><s:property value="startDate" /> </td>
-                        <td><s:property value="dueReturnDate"/> </td>
+                        <s:if test="returnDate">
+                            <td><p>rendu</p></td>
+                        </s:if>
+                        <s:else>
+                            <td><s:property value="dueReturnDate"/> </td>
+                        </s:else>
                     </tr>
                 </s:iterator>
             </table>

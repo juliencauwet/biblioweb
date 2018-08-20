@@ -71,8 +71,8 @@
                 <div id="allusers" class="col-md-3">
                 <ul>
                     <li><s:a action="index">Page d'accueil</s:a></li>
-                    <li><s:a action="book">Livres</s:a></li>
-                    <li><s:a action="currentBorrowings">Emprunts</s:a></li>
+                    <li><s:a action="book">Liste des livres et leur disponibilité</s:a></li>
+                    <li><s:a action="currentBorrowings">Consulter vos emprunts</s:a></li>
                     </br>
                 </ul>
                 </div>
@@ -82,7 +82,8 @@
                     <h2>Espace Administrateurs</h2>
                     <s:a action="admin">Enregistrement d'un ouvrage</s:a><br/>
                     <s:a action="configuration">Configuration</s:a><br/>
-                    <s:a action="getAllAppUsers">Utilisateurs</s:a><br/>
+                    <s:a action="getAllAppUsers">Liste des utilisateurs</s:a><br/>
+                    <s:a action="allBorrowings">Voir tous les emprunts</s:a><br/>
                 </s:if>
             </div>
             </div>

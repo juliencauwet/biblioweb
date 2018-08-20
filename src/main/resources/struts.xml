@@ -50,11 +50,20 @@
             <result name="login">/WEB-INF/jsp/auth.jsp</result>
         </action>
 
+        <action name="allBorrowings" class="com.openclassrooms.actions.BorrowingAction" method="getAllBorrowings">
+            <result>/WEB-INF/jsp/borrowinglist.jsp</result>
+            <result name="login">/WEB-INF/jsp/auth.jsp</result>
+        </action>
+
         <action name="extendThisBorrowing" class="com.openclassrooms.actions.BorrowingAction" method="extend">
             <result>/WEB-INF/jsp/bookdetail.jsp</result>
         </action>
 
         <action name="borrowingDetail" class="com.openclassrooms.actions.BorrowingAction"  method="getBorrowingById">
+            <result>/WEB-INF/jsp/borrowingdetail.jsp</result>
+        </action>
+
+        <action name="returnBorrowing" class="com.openclassrooms.actions.BorrowingAction" method="returnThisBook">
             <result>/WEB-INF/jsp/borrowingdetail.jsp</result>
         </action>
 

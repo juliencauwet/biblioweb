@@ -41,6 +41,11 @@ public class BorrowingAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String getAllBorrowings(){
+        setBorrowings(testPort.borrowingGetAll(new BorrowingGetAllRequest()).getBorrowingGetAll());
+        return SUCCESS;
+    }
+
     public String getBorrowingById(){
         BorrowingGetRequest request = new BorrowingGetRequest();
         request.setId(id);
@@ -89,6 +94,19 @@ public class BorrowingAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String returnThisBook(){
+        BorrowingReturnRequest request = new BorrowingReturnRequest();
+        request.setId(id);
+
+        if (testPort.borrowingReturn(request).isConfirmation())
+            addActionMessage("Le retour du livre a bien été pris en compte.");
+        else
+            addActionError("L'emprunt n'a pas pu être effectué.");
+
+        return SUCCESS;
+
+    }
+
     public String extend() {
         BorrowingExtendRequest request = new BorrowingExtendRequest();
         BorrowingGetRequest getRequest = new BorrowingGetRequest();
@@ -101,7 +119,7 @@ public class BorrowingAction extends ActionSupport {
         //Envoie les variables à la requête pour recevoir le code réponse
         request.setBorrowingId(id);
         request.setNewDueReturnDate(toXmlGregorianCalendar(setDRD(borrowing.getDueReturnDate().toGregorianCalendar())));
-        //7 * Integer.parseInt(props.getProperty("extension-duration")))
+
         int codeResp = testPort.borrowingExtend(request).getCodeResp();
 
         if(codeResp == 1 ) {

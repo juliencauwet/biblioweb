@@ -13,7 +13,10 @@
 
 </head>
 <body>
-<s:a action="extendThisBorrowing">Prolongez l'emprunt <s:property value="id"/><s:param value="id" name="id"></s:param> </s:a>
+<s:a action="extendThisBorrowing">Prolongez l'emprunt <s:property value="id"/><s:param value="id" name="id"></s:param> </s:a><br>
+<s:if test="#session.isAdmin">
+    <s:a action="returnBorrowing">Enregistrer le retour du livre<s:param value="id" name="id"></s:param></s:a><br/>
+</s:if>
 <s:hidden name="id" value="%{borrowing.id}"/>
 <s:property value="message" />
 </body>
