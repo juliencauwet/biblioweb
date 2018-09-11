@@ -19,17 +19,10 @@
 
         <s:textfield class="form-control" name="title" key="title" label="Titre de l'ouvrage" />
         <br />
-        <s:submit class="form-control" />
+        <s:submit class="form-control" value="Chercher" />
     </s:form>
 
     <div><s:property value="strNow"/> </div>
-
-
-
-
-
-
-
 
 </body>
 </html>

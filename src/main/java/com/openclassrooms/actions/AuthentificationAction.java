@@ -79,13 +79,9 @@ public class AuthentificationAction extends ActionSupport implements SessionAwar
             log.info(testPort.appUserValidityCheck(request).getUser().getEmail());
             setAppUser(testPort.appUserValidityCheck(request).getUser());
             log.info("L'utilisateur est bien enregistré");
-        }catch (NullPointerException e){
-            addActionError("Il n'y a pas d'utilisateur");
+        }catch (Exception e){
             log.info("pas d'utilisateur");
-        }
-
-        if (appUser == null) {
-            addActionError("il n'y a pas d'utilisateur");
+            addActionError("Utilisateur ou mot de passe incorrect");
             return ERROR;
         }
 

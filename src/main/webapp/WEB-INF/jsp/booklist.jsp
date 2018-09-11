@@ -20,7 +20,6 @@
 
     <div class="row">
         <div class="col-md-3">
-            <s:a action="getAllBooks">Afficher tous les livres</s:a><br />
             <br />
             <s:form class="form" action="findBookByTitle">
                 <s:textfield class="form-control" key="title" label="Titre de l'ouvrage"/>
